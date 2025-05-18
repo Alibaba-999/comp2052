@@ -1,4 +1,4 @@
-### Obtener todos los cursos (GET)
+### Obtener todos los libros (GET)
 
-GET http://localhost:5000/cursos
+GET http://localhost:5000/libros
 Content-Type: application/json
