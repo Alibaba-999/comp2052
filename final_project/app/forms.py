@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField, SelectField, IntegerField
-from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional
+from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional, URL
 
 # Formulario para login de usuario
 class LoginForm(FlaskForm):
@@ -34,6 +34,9 @@ class ChangePasswordForm(FlaskForm):
 class LibroForm(FlaskForm):
     titulo = StringField('Titulo', validators=[DataRequired(), Length(max=150)])
     autor = StringField('Autor', validators=[DataRequired(), Length(max=100)])
-    año_publicacion = IntegerField('Año de Publicación', validators=[Optional()])
+    anio_publicacion = IntegerField('Año de Publicación', validators=[Optional()])
     genero = StringField('Genero', validators=[Optional(), Length(max=50)])
+    url = StringField('URL', validators=[Optional(), URL()])
+    notas = TextAreaField('Notas', validators=[Opcional()])
+    etiquetas = StringField('Etiquetas', validators=[Optional(), Length(max=255)])
     submit = SubmitField('Guardar')

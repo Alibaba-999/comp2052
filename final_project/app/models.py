@@ -15,8 +15,11 @@ class Libro(db.Model):
     name = db.Column(db.String(64), unique=True, nullable=False)
     titulo = db.Column(db.String(100), nullable=False)
     autor = db.Column(db.String(100), nullable=False)
-    año_publicacion = db.Column(db.Integer, nullable=True)
+    anio_publicacion = db.Column(db.Integer, nullable=True)
     genero = db.Column(db.String(50), nullable=True)
+    url = db.Column(db.String(255), nullable=True)
+    notas = db.Column(db.Text, nullable=True)
+    etiquetas = db.Column(db.String(255), nullable=True)
     propietario_id = db.Column(db.Integer, db.ForeinKey('user.id'), nullable=False)
 
 

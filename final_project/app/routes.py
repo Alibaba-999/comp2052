@@ -55,8 +55,11 @@ def nuevo_libro():
         libro = Libro(
             titulo=form.titulo.data,
             autor=form.autor.data,
-            año_publicacion=form.año_publicacion.data,
+            anio_publicacion=form.anio_publicacion.data,
             genero=form.genero.data,
+            url=form.url.data,
+            notas=form.notas.data,
+            etiquetas=form.etiquetas.data,
             propietario_id=current_user.id
         )
         db.session.add(libro)
@@ -83,8 +86,11 @@ def editar_libro(id):
     if form.validate_on_submit():
         libro.titulo = form.titulo.data
         libro.autor = form.autor.data
-        libro.año_publicacion = form.año_publicacion.data
+        libro.anio_publicacion = form.anio_publicacion.data
         libro.genero = form.genero.data
+        libro.url = form.url.data
+        libro.notas = form.notas.data
+        libro.etiquetas = form.etiquetas.data
         db.session.commit()
         flash("Libro actualizado exitosamente.")  # 🔁 Traducido
         return redirect(url_for('main.dashboard'))
