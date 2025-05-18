@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, TextAreaField, SelectField
-from wtforms.validators import DataRequired, Email, EqualTo, Length
+from wtforms import StringField, PasswordField, SubmitField, TextAreaField, SelectField, IntegerField
+from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional
 
 # Formulario para login de usuario
 class LoginForm(FlaskForm):
@@ -31,7 +31,9 @@ class ChangePasswordForm(FlaskForm):
     submit = SubmitField('Update Password')
 
 # Formulario para crear o editar un curso
-class CursoForm(FlaskForm):
-    titulo = StringField('Course title', validators=[DataRequired()])
-    descripcion = TextAreaField('Description', validators=[DataRequired()])
-    submit = SubmitField('Save')
+class LibroForm(FlaskForm):
+    titulo = StringField('Titulo', validators=[DataRequired(), Length(max=150)])
+    autor = StringField('Autor', validators=[DataRequired(), Length(max=100)])
+    año_publicacion = IntegerField('Año de Publicación', validators=[Optional()])
+    genero = StringField('Genero', validators=[Optional(), Length(max=50)])
+    submit = SubmitField('Guardar')

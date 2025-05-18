@@ -7,15 +7,18 @@ from werkzeug.security import generate_password_hash, check_password_hash
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# Modelo de roles (Admin, Professor, Student, etc.)
-class Role(db.Model):
-    __tablename__ = 'role'
+# Modelo de libro personal asociado a un usuario (propietario)
+class Libro(db.Model):
+    __tablename__ = 'libro'
     
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True, nullable=False)
+    titulo = db.Column(db.String(100), nullable=False)
+    autor = db.Column(db.String(100), nullable=False)
+    año_publicacion = db.Column(db.Integer, nullable=True)
+    genero = db.Column(db.String(50), nullable=True)
+    propietario_id = db.Column(db.Integer, db.ForeinKey('user.id'), nullable=False)
 
-    # Relación inversa opcional (para ver usuarios asociados al rol)
-    users = db.relationship('User', backref='role', lazy=True)
 
 # Modelo de usuarios del sistema
 class User(UserMixin, db.Model):
@@ -28,7 +31,7 @@ class User(UserMixin, db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
 
     # Relación con cursos (si es profesor)
-    cursos = db.relationship('Curso', backref='profesor', lazy=True)
+    libros = db.relationship('Libros', backref='propietario', lazy=True)
 
     def set_password(self, password: str):
         """
@@ -41,12 +44,3 @@ class User(UserMixin, db.Model):
         Verifica si la contraseña ingresada es válida comparando con el hash.
         """
         return check_password_hash(self.password_hash, password)
-
-# Modelo de curso asociado a un profesor
-class Curso(db.Model):
-    __tablename__ = 'curso'
-
-    id = db.Column(db.Integer, primary_key=True)
-    titulo = db.Column(db.String(100), nullable=False)
-    descripcion = db.Column(db.Text, nullable=False)
-    profesor_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
