@@ -37,6 +37,6 @@ class LibroForm(FlaskForm):
     anio_publicacion = IntegerField('Año de Publicación', validators=[Optional()])
     genero = StringField('Genero', validators=[Optional(), Length(max=50)])
     url = StringField('URL', validators=[Optional(), URL()])
-    notas = TextAreaField('Notas', validators=[Opcional()])
+    notas = TextAreaField('Notas', validators=[Optional()])
     etiquetas = StringField('Etiquetas', validators=[Optional(), Length(max=255)])
     submit = SubmitField('Guardar')

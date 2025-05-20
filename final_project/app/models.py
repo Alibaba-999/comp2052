@@ -20,7 +20,7 @@ class Libro(db.Model):
     url = db.Column(db.String(255), nullable=True)
     notas = db.Column(db.Text, nullable=True)
     etiquetas = db.Column(db.String(255), nullable=True)
-    propietario_id = db.Column(db.Integer, db.ForeinKey('user.id'), nullable=False)
+    propietario_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 
 # Modelo de usuarios del sistema
@@ -34,7 +34,7 @@ class User(UserMixin, db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
 
     # Relación con cursos (si es profesor)
-    libros = db.relationship('Libros', backref='propietario', lazy=True)
+    libros = db.relationship('Libro', backref='propietario', lazy=True)
 
     def set_password(self, password: str):
         """
@@ -47,3 +47,14 @@ class User(UserMixin, db.Model):
         Verifica si la contraseña ingresada es válida comparando con el hash.
         """
         return check_password_hash(self.password_hash, password)
+
+# Definición del modelo Role
+class Role(db.Model):
+    __tablename__ = 'role'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), unique=True, nullable=False)
+    users = db.relationship('User', backref='role', lazy=True)
+
+    def __repr__(self):
+        return f'<Role {self.name}>'
