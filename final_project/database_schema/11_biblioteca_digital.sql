@@ -1,3 +1,9 @@
+-- Configuración inicial de la base de datos y usuario
+CREATE DATABASE IF NOT EXISTS biblioteca_digital_personal;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+FLUSH PRIVILEGES;
+
+-- Asegurarse de eliminar la base de datos si existe
 DROP DATABASE IF EXISTS biblioteca_digital_personal;
 CREATE DATABASE biblioteca_digital_personal CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE biblioteca_digital_personal;

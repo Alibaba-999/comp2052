@@ -17,7 +17,7 @@ class RegisterForm(FlaskForm):
     
     role = SelectField(
         'Role',
-        choices=[('Student', 'Student'), ('Professor', 'Professor')],
+        choices=[('Lector', 'Lector'), ('Moderador', 'Moderador'), ('Admin', 'Admin')],
         validators=[DataRequired()]
     )
 
