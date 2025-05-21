@@ -245,8 +245,8 @@ Cada estudiante (o grupo) realizará uno de los siguientes proyectos como práct
 │           └── styles.css              # (Opcional) Estilos personalizados
 ```
 ## 🖥️Repositorios de Integrantes
-- Lara V. Cordero Rodríguez:
-- Ian P. Padua Cuevas: 
+- Lara V. Cordero Rodríguez: https://github.com/lvctech/comp2052
+- Ian P. Padua Cuevas: https://github.com/Alibaba-999/comp2052
 
 ## 🧠 Licencia
 
