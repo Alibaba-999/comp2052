@@ -2,9 +2,13 @@
 
 Esta plataforma permite a los usuarios gestionar su Biblioteca Digital. En la cual puedes registrarte, editar libros, añadir libros y borrar, facilitando tu experiencia como leyente. Existe la opción de tres roles en esta aplicación: **Admin**, **Moderador** y **Lector**. Cada uno con sus respectivas normativas y funcionalidades.
 
+---
+
 ## 🧑‍💻 Integrantes del Equipo
 - Lara V. Cordero Rodríguez - R00607366 - lcordero7366@arecibointer.edu
 - Ian P. Padua Cuevas -R00608377 - ipadua8377@arecibointer.edu
+
+---
 
 A continuación, aquí se presentan las capturas de las interfaces de el proyecto:
 
@@ -25,6 +29,20 @@ A continuación, aquí se presentan las capturas de las interfaces de el proyect
    <img src="./app/images/register.png" alt="User List">
    <figcaption></figcaption>
 </figure>
+
+### Página Dashboard
+<figure class="image">
+   <img src="./app/images/dashboard.png" alt="User List">
+   <figcaption></figcaption>
+</figure>
+
+### Página de Usuarios
+<figure class="image">
+   <img src="./app/images/users.png" alt="User List">
+   <figcaption></figcaption>
+</figure>
+
+---
 
 ## 🚀 Tecnologías utilizadas
 
