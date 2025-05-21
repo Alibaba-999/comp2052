@@ -1,11 +1,11 @@
 {% extends "layout.html" %} {% block title %}Home{% endblock %} {% block content
 %}
 <div class="text-center">
-  <h1 class="mt-5">Welcome to your Digital Library</h1>
+  <h1 class="mt-5">Bienvenido a tu Libreria Digital</h1>
   {% if current_user.id %}
-  <p class="lead text-muted">Select the Dashboard option to view the data.</p>
+  <p class="lead text-muted">Selecciona tu opción de Dashboard para ver la data.</p>
   {% else %}
-  <p class="lead text-body-secondary">Please log in or register to continue.</p>
+  <p class="lead text-body-secondary">Registrate o Log In para continuar.</p>
   {% endif %}
 </div>
 {% endblock %}

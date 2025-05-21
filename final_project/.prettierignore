@@ -1,5 +1,5 @@
 templates/**/*.html
 templates/cambiar_password.html
-templates/curso_form.html
+templates/libro_form.html
 *.jinja
 *.j2

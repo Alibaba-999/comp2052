@@ -1,7 +1,4 @@
--- Configuración inicial de la base de datos y usuario
-CREATE DATABASE IF NOT EXISTS biblioteca_digital_personal;
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
-FLUSH PRIVILEGES;
+-- Active: 1747790636127@@127.0.0.1@3306@biblioteca_digital_personal
 
 -- Asegurarse de eliminar la base de datos si existe
 DROP DATABASE IF EXISTS biblioteca_digital_personal;
@@ -36,3 +33,5 @@ CREATE TABLE libro_personal (
 );
 
 INSERT INTO role (name) VALUES ('Admin'), ('Moderador'), ('Lector');
+
+SELECT * FROM user;

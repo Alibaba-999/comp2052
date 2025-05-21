@@ -44,25 +44,25 @@
             {% if current_user.role.name == 'Admin' %}
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('main.listar_usuarios') }}"
-                >Users</a
+                >Usuarios</a
               >
             </li>
             {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('main.cambiar_password') }}"
-                >Change Password</a
+                >Cambiar la contraseña</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+              <a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+              <a class="nav-link" href="{{ url_for('auth.login') }}">Log In</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('auth.register') }}"
-                >Register</a
+                >Registro</a
               >
             </li>
             {% endif %}

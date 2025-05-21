@@ -1,22 +1,29 @@
-# 🎓 Gestión de Cursos en Línea (Proyecto Demo) - Flask + MySQL
+# 📚 Gestión de Biblioteca Personal Digital - Flask + MySQL
 
-Este proyecto permite gestionar cursos en línea donde **profesores** pueden crear cursos, y **estudiantes** pueden visualizarlos. Además, los **administradores** pueden gestionar usuarios y roles. Es el Proyecto 1 dentro de una colección de 11 proyectos desarrollados como práctica final para los estudiantes.
+Esta plataforma permite a los usuarios gestionar su Biblioteca Digital. En la cual puedes registrarte, editar libros, añadir libros y borrar, facilitando tu experiencia como leyente. Existe la opción de tres roles en esta aplicación: **Admin**, **Moderador** y **Lector**. Cada uno con sus respectivas normativas y funcionalidades.
 
-A continuación, capturas de algunas de la interfaces del front-end del proyecto:
+## 🧑‍💻 Integrantes del Equipo
+- Lara V. Cordero Rodríguez - R00607366 - lcordero7366@arecibointer.edu
+- Ian P. Padua Cuevas -R00608377 - ipadua8377@arecibointer.edu
 
+A continuación, aquí se presentan las capturas de las interfaces de el proyecto:
+
+### Página Principal
 <figure class="image">
-   <img src="images/image-01.png" alt="Login Form">
-   <figcaption>Login Page</figcaption>
+   <img src="./app/images/index.png" alt="Index">
+   <figcaption></figcaption>
 </figure>
 
+### Página de Log In
 <figure class="image">
-   <img src="images/image-02.png" alt="Dashboard">
-   <figcaption>Home Page / Dashboard</figcaption>
+   <img src="./app/images/login.png" alt="Log In">
+   <figcaption></figcaption>
 </figure>
 
+### Página de Registro
 <figure class="image">
-   <img src="images/image-03.png" alt="User List">
-   <figcaption>Registered Users</figcaption>
+   <img src="./app/images/register.png" alt="User List">
+   <figcaption></figcaption>
 </figure>
 
 ## 🚀 Tecnologías utilizadas
@@ -30,7 +37,7 @@ A continuación, capturas de algunas de la interfaces del front-end del proyecto
 
 ---
 
-## 📂 Estructura del proyecto
+## 📂 Archivos del proyecto
 
 | Archivo / Carpeta                                                 | Descripción                                                                |
 | ----------------------------------------------------------------- | -------------------------------------------------------------------------- |
@@ -49,37 +56,23 @@ A continuación, capturas de algunas de la interfaces del front-end del proyecto
 | `app/templates/login.html`                                        | Formulario de login de usuario                                             |
 | `app/templates/register.html`                                     | Formulario de registro con selección de rol                                |
 | `app/templates/dashboard.html`                                    | Panel principal del usuario autenticado                                    |
-| `app/templates/curso_form.html`                                   | Formulario de creación/edición de cursos                                   |
-| `app/templates/cursos.html`                                       | Vista de cursos creados por el usuario                                     |
+| `app/templates/libro_form.html`                                   | Formulario de creación/edición de libros                                   |
+| `app/templates/libros.html`                                       | Vista de libros creados por el usuario                                     |
 | `app/templates/usuarios.html`                                     | Listado de usuarios con sus roles (solo para admins)                       |
 | `app/templates/cambiar_password.html`                             | Formulario para cambiar la contraseña del usuario                          |
 | `static/css/styles.css`                                           | Archivo CSS personalizado (opcional)                                       |
-| `database_schema/01_cursos.sql`                                   | SQL para crear la base de datos y tablas del proyecto de cursos            |
+| `database_schema/11_biblioteca_digital.sql`                                   | SQL para crear la base de datos y tablas del proyecto de cursos            |
 | `database_schema/02_biblioteca.sql` – `11_biblioteca_digital.sql` | Archivos SQL de los esquemas de bases de datos de los proyectos asignables |
-
-> Los archivos `.sql` en la carpeta `database_schema/` corresponden al esquema de base de datos para cada uno de estos proyectos.
 
 ---
 
-## 📚 Proyectos Finales Asignables
+## ⭐ Proyectos Final Asignado
 
 Cada estudiante (o grupo) realizará uno de los siguientes proyectos como práctica final:
 
 | Nº  | Proyecto                               | CRUD Principal    | Roles                            |
 | --- | -------------------------------------- | ----------------- | -------------------------------- |
-| 1   | Gestión de Cursos en Línea             | Cursos            | Estudiante, Profesor, Admin      |
-| 2   | Gestor de Biblioteca                   | Libros            | Lector, Bibliotecario, Admin     |
-| 3   | Gestor de Proyectos Freelance          | Proyectos         | Cliente, Freelancer, Admin       |
-| 4   | Administrador de Eventos               | Eventos           | Participante, Organizador, Admin |
-| 5   | Inventario Personal                    | Ítems/Productos   | Usuario, Dueño, Admin            |
-| 6   | Sistema de Seguimiento de Tickets      | Tickets           | Usuario, Técnico, Admin          |
-| 7   | Gestión de Consultas Médicas           | Citas médicas     | Paciente, Médico, Admin          |
-| 8   | Plataforma de Publicación de Artículos | Artículos         | Autor, Editor, Admin             |
-| 9   | Sistema de Encuestas y Votaciones      | Encuestas         | Votante, Moderador, Admin        |
-| 10  | Gestor de Recetas Culinarias           | Recetas           | Usuario, Chef, Admin             |
 | 11  | Gestión de Biblioteca Personal Digital | Libros personales | Lector, Moderador, Admin         |
-
-> Los archivos `.sql` en la carpeta `database_schema/` corresponden al esquema de base de datos para cada uno de estos proyectos.
 
 ---
 
@@ -99,13 +92,6 @@ Cada estudiante (o grupo) realizará uno de los siguientes proyectos como práct
    git clone https://github.com/javierdastas/comp2052.git
    cd comp2052/final_project
    ```
-
-   > **IMPORTANTE** : Para el trabajo grupal es requerido que uno de los integrantes del grupo cree una copia del repositorio del MASTER del curso (profesor). Este integrante será el líder del grupo y los demás miembros del grupo deben clonar el proyecto del repositorio del líder.
-
-   > Luego de que los otros integrantes hayan clonado la copia del integrante líder, el líder debe asignar a los otros integrantes como colaboradores del repositorio del líder.
-
-   - Ver el siguiente enlace para mayor información:
-     ### [**⏿ Inviting a collaborator to a personal repository ⏿**](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository)
 
 2. **Crear entorno virtual y activarlo**
 
@@ -167,33 +153,6 @@ Cada estudiante (o grupo) realizará uno de los siguientes proyectos como práct
    http://127.0.0.1:5000
    ```
 
-## 👤 Credenciales de prueba
-
-Estas credenciales puedes crearlas utilizano el archivo `create_demo_users.py`. De igual manera puedes modificar el archivo según los roles de tu proyecto.
-
-| Rol        | Usuario       | Email               | Contraseña |
-| ---------- | ------------- | ------------------- | ---------- |
-| Admin      | Administrator | admin@example.com   | admin123   |
-| Profesor   | John Doe      | prof@example.com    | prof123    |
-| Estudiante | Steve Jobs    | student@example.com | student123 |
-
-## 📌 Archivos a crear o modificar por el estudiante según el proyecto asignado
-
-Puedes utilizar este proyecto de Gestión de Cursos en Línea como base para desarrollar cualquier otro proyecto asignado (por ejemplo: Recetas, Artículos, Tickets, etc.), debes crear o modificar los siguientes archivos:
-
-| Archivo                              | Qué debes modificar o crear                                                                                                                                                                                               |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `app/models.py`                      | Renombrar el modelo Curso al nuevo recurso principal (e.g. Receta, Articulo). Cambiar atributos de la entidad principal según el nuevo CRUD.                                                                              |
-| `app/forms.py`                       | Modificar CursoForm para reflejar los datos o campos de tu entidad principal. Especifica el tipo de control de entrada según corresponda al dato de tu entidad principal.                                                 |
-| `app/routes.py`                      | Cambiar las rutas relacionadas con cursos (/cursos, /editar, /eliminar) al nuevo recurso. Asegúrate de actualizar las consultas y las plantillas usadas.                                                                  |
-| `app/test_routes.py`                 | Rutas (end-points) para pruebas relacionadas con cursos (/cursos). Asegúrate de actualizar las consultas y las plantillas usadas para realizar las pruebas de tu proyecto.                                                |
-| `templates/curso_form.html`          | Renombrar el archivo (ej. receta_form.html) y cambia los datos (cajas de texto, etc.) o campos que se muestran en el formulario.                                                                                          |
-| `templates/cursos.html`              | Renombrar el archivo (ej. recetas.html) y actualiza la tabla para mostrar los datos específicos de tu entidad principal (tabla).                                                                                          |
-| `database_schema/XX_tu_proyecto.sql` | Verifica que el archivo .sql correspondiente a tu proyecto esté actualizado según los datos que solicitarás para tu proyecto. Puedes editarlo o usarlo como guía para crear la base de datos y las tablas de tu proyecto. |
-| `create_demo_users.py`               | No es necesario modificar sino quieres crear usuarios previos a correr la aplicación. Pero puedes agregar datos iniciales para probar tu base de datos y conexión si lo deseas.                                           |
-| `templates/dashboard.html`           | Cambiar los títulos o enlaces para que hagan referencia al nombre de tu entidad principal y proyecto.                                                                                                                     |
-| `README.md`                          | Si haces un fork o copia del proyecto, personaliza este archivo con el nombre de tu proyecto final y la documentación correspondiente.                                                                                    |
-
 ## ✅ Archivos clave para el estudiante
 
 - app/models.py: Modelos SQLAlchemy
@@ -243,10 +202,6 @@ Puedes utilizar este proyecto de Gestión de Cursos en Línea como base para des
     > **IMPORTANTE** : Cada vez que cambies el código del archivo `__init__.py` debes reiniciar el proyecto de Flask.
   - Para cada integrante del grupo el documento debe incluir las direcciones del repositorio o carpeta en Github. Puede realizar esta parte en forma de tabla (nombre del integrante, dirección en github) para cada integrante.
 
-> **IMPORTANTE** :
-
-- Cada sección en el documento debe estar identificada con un título que corresponda a la sección o información a presentar en el documento.
-- Todos los integrantes o miembros de grupo de forma individual debe entregar una copia del documento final y tener su propio repositorio en GitHub con copia del código final.
 
 ## 🗂️ Estructura Final del Proyecto a Entregar en su Github
 
@@ -289,6 +244,9 @@ Puedes utilizar este proyecto de Gestión de Cursos en Línea como base para des
 │       └── 📁 css/
 │           └── styles.css              # (Opcional) Estilos personalizados
 ```
+## 🖥️Repositorios de Integrantes
+- Lara V. Cordero Rodríguez:
+- Ian P. Padua Cuevas: 
 
 ## 🧠 Licencia
 

@@ -1,6 +1,5 @@
-{% extends "layout.html" %} {% block title %}{{ editar and "Edit Course" or "New
-Course" }}{% endblock %} {% block content %}
-<h2 class="mb-4">{{ editar and "Edit Course" or "New Course" }}</h2>
+{% extends "layout.html" %} {% block title %}{{ editar and "Editar Libro" or "Nuevo Libro" }}{% endblock %} {% block content %}
+<h2 class="mb-4">{{ editar and "Editar Libro" or "Nuevo Libro" }}</h2>
 
 <form method="POST" novalidate>
   {{ form.hidden_tag() }}
@@ -8,14 +7,13 @@ Course" }}{% endblock %} {% block content %}
   <!-- Course Title -->
   <div class="mb-3">
     {{ form.titulo.label(class="form-label") }} {{
-    form.titulo(class="form-control", placeholder="Enter course title") }}
+    form.titulo(class="form-control", placeholder="Entra el titulo del libro") }}
   </div>
 
   <!-- Course Description -->
   <div class="mb-3">
     {{ form.descripcion.label(class="form-label") }} {{
-    form.descripcion(class="form-control", placeholder="Enter course
-    description") }}
+    form.descripcion(class="form-control", placeholder="Entra la descripción") }}
   </div>
 
   <!-- Submit Button -->

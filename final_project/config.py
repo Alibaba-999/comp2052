@@ -15,7 +15,7 @@ class Config:
     # Ejemplo para MySQL usando PyMySQL (puede adaptarse a PostgreSQL o SQLite)
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         'DATABASE_URL',
-        'mysql+pymysql://root:root@localhost/biblioteca_digital_personal'
+        'mysql+pymysql://root:lara1234@localhost/biblioteca_digital_personal'
     )
 
     # Desactiva el sistema de seguimiento de modificaciones de SQLAlchemy (mejora el rendimiento)
