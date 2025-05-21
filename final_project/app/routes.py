@@ -41,7 +41,7 @@ def dashboard():
     """
     Panel principal del usuario. Muestra los libros del usuario.
     """
-    libros = Libro.query.filter_by(propietario_id=current_user.id).all()
+    libros = Libro.query.filter_by(usuario_id=current_user.id).all()  # Cambiado de propietario_id a usuario_id
     return render_template('dashboard.html', libros=libros)
 
 @main.route('/libros/nuevo', methods=['GET', 'POST'])
@@ -60,7 +60,7 @@ def nuevo_libro():
             url=form.url.data,
             notas=form.notas.data,
             etiquetas=form.etiquetas.data,
-            propietario_id=current_user.id
+            usuario_id=current_user.id  # Cambiado de propietario_id a usuario_id
         )
         db.session.add(libro)
         db.session.commit()

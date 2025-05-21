@@ -9,10 +9,9 @@ def load_user(user_id):
 
 # Modelo de libro personal asociado a un usuario (propietario)
 class Libro(db.Model):
-    __tablename__ = 'libro'
+    __tablename__ = 'libro_personal'
     
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True, nullable=False)
     titulo = db.Column(db.String(100), nullable=False)
     autor = db.Column(db.String(100), nullable=False)
     anio_publicacion = db.Column(db.Integer, nullable=True)
@@ -20,21 +19,22 @@ class Libro(db.Model):
     url = db.Column(db.String(255), nullable=True)
     notas = db.Column(db.Text, nullable=True)
     etiquetas = db.Column(db.String(255), nullable=True)
-    propietario_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    usuario_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    
+    usuario = db.relationship('User', back_populates='libros')
 
-
-# Modelo de usuarios del sistema
+# Modelo de usuarios del sistema# Modelo de usuarios del sistema
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
     
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password_hash = db.Column(db.String(256), nullable=False)  # Asegura suficiente espacio para el hash
+    password_hash = db.Column(db.String(256), nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
-
-    # Relación con cursos (si es profesor)
-    libros = db.relationship('Libro', backref='propietario', lazy=True)
+    
+    role = db.relationship('Role', back_populates='users')
+    libros = db.relationship('Libro', back_populates='usuario')
 
     def set_password(self, password: str):
         """
@@ -48,13 +48,11 @@ class User(UserMixin, db.Model):
         """
         return check_password_hash(self.password_hash, password)
 
-# Definición del modelo Role
+# Definición del modelo Role# Definición del modelo Role
 class Role(db.Model):
     __tablename__ = 'role'
-
+    
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
-    users = db.relationship('User', backref='role', lazy=True)
-
-    def __repr__(self):
-        return f'<Role {self.name}>'
+    
+    users = db.relationship('User', back_populates='role')
