@@ -68,19 +68,19 @@ def nuevo_libro():
         return redirect(url_for('main.dashboard'))
     return render_template('libro_form.html', form=form)
 
-@main.route('/libros/<int:id>/editar', methods=['GET', 'POST'])
+@main.route('/libros/editar/<int:id>', methods=['GET', 'POST'])
 @login_required
 def editar_libro(id):
     """
-    Permite editar un libro existente si es del usuario.
+    Permite editar un libro existente si el usuario es el propietario.
     """
     libro = Libro.query.get_or_404(id)
-
-    # Validación de permisos
-    if libro.propietario_id != current_user.id:
-        flash('No tienes permiso para editar este libro.')  # 🔁 Traducido
+    
+    # Verificar que el usuario actual sea el propietario o administrador
+    if libro.usuario_id != current_user.id and current_user.role.name != 'Admin':
+        flash('❌ No tienes permiso para editar este libro.', 'error')
         return redirect(url_for('main.dashboard'))
-
+    
     form = LibroForm(obj=libro)
 
     if form.validate_on_submit():
@@ -97,21 +97,22 @@ def editar_libro(id):
 
     return render_template('libro_form.html', form=form, editar=True, libro=libro)
 
-@main.route('/libros/<int:id>/eliminar', methods=['POST'])
+@main.route('/libros/eliminar/<int:id>', methods=['POST'])
 @login_required
 def eliminar_libro(id):
     """
-    Elimina un libro si es del usuario.
+    Elimina un libro específico si el usuario actual es el propietario.
     """
     libro = Libro.query.get_or_404(id)
-
-    if libro.propietario_id != current_user.id:
-        flash('No tienes permiso para eliminar este libro.')  # 🔁 Traducido
+    
+    # Verificar que el usuario actual sea el propietario o administrador
+    if libro.usuario_id != current_user.id and current_user.role.name != 'Admin':
+        flash('❌ No tienes permiso para eliminar este libro.', 'error')
         return redirect(url_for('main.dashboard'))
-
+    
     db.session.delete(libro)
     db.session.commit()
-    flash("Libro eliminado exitosamente.")  # 🔁 Traducido
+    flash('✅ Libro eliminado correctamente.')
     return redirect(url_for('main.dashboard'))
 
 @main.route('/usuarios')
