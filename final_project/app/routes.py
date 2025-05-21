@@ -40,8 +40,16 @@ def cambiar_password():
 def dashboard():
     """
     Panel principal del usuario. Muestra los libros del usuario.
+    Si es Lector, muestra todos los libros.
+    Si es Admin o Moderador, muestra sus propios libros.
     """
-    libros = Libro.query.filter_by(usuario_id=current_user.id).all()  # Cambiado de propietario_id a usuario_id
+    if current_user.role.name == 'Lector':
+        # Lector ve todos los libros
+        libros = Libro.query.all()
+    else:
+        # Admin y Moderador ven sus propios libros
+        libros = Libro.query.filter_by(usuario_id=current_user.id).all()
+        
     return render_template('dashboard.html', libros=libros)
 
 @main.route('/libros/nuevo', methods=['GET', 'POST'])

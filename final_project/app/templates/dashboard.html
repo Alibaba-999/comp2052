@@ -2,7 +2,7 @@
 content %}
 <div class="row">
   <div class="col">
-    <h3>Manejo de Libros</h3>
+    <h3>Biblioteca Digital</h3>
   </div>
   <div class="col text-end">
     {% if current_user.role.name != 'Lector' %}
@@ -19,7 +19,9 @@ content %}
       <th>Título</th>
       <th>Autor</th>
       <th>Género</th>
+      {% if current_user.role.name != 'Lector' %}
       <th class="text-center">Acciones</th>
+      {% endif %}
     </tr>
   </thead>
   <tbody>
@@ -28,8 +30,9 @@ content %}
       <td>{{ libro.titulo }}</td>
       <td>{{ libro.autor }}</td>
       <td>{{ libro.genero }}</td>
+      {% if current_user.role.name != 'Lector' %}
       <td class="text-center ps-0 pe-0">
-        {% if current_user.role.name == 'Admin' or libro.propietario_id == current_user.id %}
+        {% if current_user.role.name == 'Admin' or libro.usuario_id == current_user.id %}
         <a
           class="btn btn-sm btn-warning"
           href="{{ url_for('main.editar_libro', id=libro.id) }}"
@@ -55,6 +58,7 @@ content %}
         <span class="text-muted"><i class="bi bi-lock"></i></span>
         {% endif %}
       </td>
+      {% endif %}
     </tr>
     {% endfor %}
   </tbody>
@@ -62,6 +66,6 @@ content %}
 
 {% if current_user.role.name == 'Lector' %}
 <p class="text-center pe-3 mt-0 text-body-tertiary fw-lighter fst-italic">
-  No tienes permiso para crear, actualizar o borrar un libro.
+  Modo de solo lectura: puedes ver los libros pero no puedes crear, actualizar o borrar.
 </p>
 {% endif %} {% endblock %}
